@@ -41,3 +41,12 @@
 - To conduct in-depth examination and analysis of travel data.
 - To identify trends and opportunities within the travel industry.
 - To provide analysis results for data-driven decision-making.
+
+# ⭕ Data Set Notes:
+
+- Customers are represented by "contactID."
+- "bookingID" is used for the number of reservations, and "passengerID" is used for the number of passengers. While multiple passengers ("passengerID") can be in one reservation, there can only be one "contactID."
+- Membership registration dates are left blank for non-member customers.
+- "paymentstatus" should not count refunds as both successful and unsuccessful.
+
+These notes provide an explanation of the dataset's characteristics and some essential considerations to keep in mind.
