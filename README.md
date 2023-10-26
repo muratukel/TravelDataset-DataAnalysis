@@ -73,3 +73,6 @@ To represent the database structure and relationships between tables, you can us
 - The "Booking Table" and "Payment Table" are linked through the "booking_id" column, showing that payments are related to bookings.
 
 This is a simplified textual representation of the database structure and relationships between tables. For a more detailed visual representation, you can use database modeling tools like Entity-Relationship Diagrams (ERD) or draw diagrams using applications like draw.io or Lucidchart.
+
+![image](https://github.com/muratukel/TravelDataset-DataAnalysis/assets/136103635/8bebb0ec-32ff-4bea-ae07-2c1b88c4e17a)
+
