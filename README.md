@@ -75,16 +75,3 @@ To represent the database structure and relationships between tables, you can us
 This is a simplified textual representation of the database structure and relationships between tables. For a more detailed visual representation, you can use database modeling tools like Entity-Relationship Diagrams (ERD) or draw diagrams using applications like draw.io or Lucidchart.
 
 ![image](https://github.com/muratukel/TravelDataset-DataAnalysis/assets/136103635/8bebb0ec-32ff-4bea-ae07-2c1b88c4e17a)
-
-```sql
-select 
-	distinct b.contact_id as customers,  -- benzersiz müşteriler verir.
-	count(distinct b.id) as total_sales,
-	sum(pt.amount) as total_price,
-	round(avg(pt.amount),2) as avg_ticket_price
-from booking as b
-left join payment as pt
-	on pt.booking_id=b.id
-where pt.payment_status = 'Succes-Payment'	
-group by 1
-```
