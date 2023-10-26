@@ -35,3 +35,9 @@ This data set comprises three distinct tables from a travel reservation platform
 - "payment_date" shows the date on which the payment transaction occurred.
 
 This data set provides valuable insights into travel reservations and customer information. It is particularly useful for conducting detailed analyses of customer behavior, reservation preferences, and payment transactions. This data set holds significant importance for tasks such as evaluating the impact of membership, payment success, and reservation sources in the travel industry and customer service. The analyses performed on this data set can aid in making strategic decisions for the travel industry and customer service sector.
+
+## Proje Amaçları
+
+- Seyahat verilerini derinlemesine incelemek ve analiz etmek.
+- Seyahat endüstrisindeki eğilimleri ve fırsatları belirlemek.
+- Veri odaklı kararlar almak için analiz sonuçları sağlamak.
