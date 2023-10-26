@@ -2,7 +2,7 @@
 
 ![World Tourism Day](https://img.freepik.com/free-photo/top-view-world-tourism-day-with-lettering_23-2148608799.jpg?w=1380&t=st=1698343584~exp=1698344184~hmac=7546ca34214ef38e0295f0368fb53eb071c097b0f9532a9b0bcacd8e8e455161)
 
-## Data Set Overview: WanderLuxe Travel Data Analysis 
+## Data Set Overview: WanderLuxe Travel Data Analysis 🔍 📑
 
 This data set comprises three distinct tables from a travel reservation platform, namely the "Booking Table," "Passenger Table," and "Payment Table." These tables contain detailed data related to customer reservations, passenger details, and payment transactions. Below is a more in-depth description of the components of this data set:
 
@@ -36,7 +36,7 @@ This data set comprises three distinct tables from a travel reservation platform
 
 This data set provides valuable insights into travel reservations and customer information. It is particularly useful for conducting detailed analyses of customer behavior, reservation preferences, and payment transactions. This data set holds significant importance for tasks such as evaluating the impact of membership, payment success, and reservation sources in the travel industry and customer service. The analyses performed on this data set can aid in making strategic decisions for the travel industry and customer service sector.
 
-## Project Objectives
+## Project Objectives 📊 📈
 
 - To conduct in-depth examination and analysis of travel data.
 - To identify trends and opportunities within the travel industry.
