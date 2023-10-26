@@ -50,3 +50,26 @@
 - "paymentstatus" should not count refunds as both successful and unsuccessful.
 
 These notes provide an explanation of the dataset's characteristics and some essential considerations to keep in mind.
+
+## 🏗️Database Structure and Diagram 
+
+To represent the database structure and relationships between tables, you can use a textual format. Below is an example of a simple database structure:
+
+**Tables:**
+
+- `Booking Table`
+  - Columns: `id`, `contact_id`, `e_mail`, `booking_company`, `member_sales`, `user_id`, `user_register_date`, `booking_environment`, `booking_date`
+
+- `Passenger Table`
+  - Columns: `id`, `booking_id`, `gender`, `name`, `date_of_birth`
+
+- `Payment Table`
+  - Columns: `id`, `booking_id`, `payment_status`, `card_number`, `payment_date`
+
+**Relationships:**
+
+- The "Booking Table" and "Passenger Table" are related through the "booking_id" column, indicating that passengers are associated with bookings.
+
+- The "Booking Table" and "Payment Table" are linked through the "booking_id" column, showing that payments are related to bookings.
+
+This is a simplified textual representation of the database structure and relationships between tables. For a more detailed visual representation, you can use database modeling tools like Entity-Relationship Diagrams (ERD) or draw diagrams using applications like draw.io or Lucidchart.
