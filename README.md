@@ -6,7 +6,7 @@
 
 This data set comprises three distinct tables from a travel reservation platform, namely the "Booking Table," "Passenger Table," and "Payment Table." These tables contain detailed data related to customer reservations, passenger details, and payment transactions. Below is a more in-depth description of the components of this data set:
 
-**Booking Table:**
+**Booking Table 📅:**
 
 - The "id" column serves as a unique identifier for each reservation.
 - "contact_id" represents customers and indicates that a customer can make multiple reservations.
@@ -18,7 +18,7 @@ This data set comprises three distinct tables from a travel reservation platform
 - "booking_environment" indicates where the reservation was made, either through an app or online.
 - "booking_date" records the date when the reservation was made by the customer.
 
-**Passenger Table:**
+**Passenger Table 🚶‍♂️:**
 
 - "id" serves as a unique identifier for each passenger.
 - "booking_id" is used to link passengers to reservations and matches with the "id" in the "Booking" table.
@@ -26,7 +26,7 @@ This data set comprises three distinct tables from a travel reservation platform
 - "name" contains the names of the passengers.
 - "date_of_birth" displays the birthdate of the passengers.
 
-**Payment Table:**
+**Payment Table 💳:**
 
 - "id" is a unique identifier for each payment transaction.
 - "booking_id" is used to associate payments with relevant reservations.
