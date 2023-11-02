@@ -96,3 +96,4 @@ left join payment as pt
 where pt.payment_status = 'Succes-Payment'		-- successful payment filter 
 group by 1                                      	-- customer-based grouping
 ```
+- This code retrieves the total sales quantity, amount, and average ticket price for each customer in the dataset and sorts them in descending order by the total amount. This allows you to see the customers who spend the most.
