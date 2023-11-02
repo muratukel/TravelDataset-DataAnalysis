@@ -116,20 +116,21 @@ left join passenger as p
 where extract(year from b.booking_date) = 2020			-- bookings for 2020
 group by 1,2
 ```
--to_char(b.booking_date, 'YYYY-MM') as year_filter: In this section, we convert the reservation date in the booking_date column to the 'YYYY-MM' format, creating a column that represents the reservation date in the year and month format.
+- `to_char(b.booking_date, 'YYYY-MM') as year_filter`: In this section, we convert the reservation date in the `booking_date` column to the 'YYYY-MM' format, creating a column that represents the reservation date in the year and month format.
 
--b.booking_environment as environment_breakdown: In this section, we select the booking_environment column, which represents the reservation environment. It indicates where the reservations were made.
+- `b.booking_environment as environment_breakdown`: In this section, we select the `booking_environment` column, which represents the reservation environment. It indicates where the reservations were made.
 
--count(distinct p.id) as total_passenger_numbers: This part calculates the number of unique passengers for each reservation. It counts the total number of passengers with a left join to the passenger table, obtaining the passenger count for each reservation.
+- `count(distinct p.id) as total_passenger_numbers`: This part calculates the number of unique passengers for each reservation. It counts the total number of passengers with a left join to the `passenger` table, obtaining the passenger count for each reservation.
 
--count(distinct b.id) as total_number_of_baskets: This part calculates the number of unique baskets for each reservation. It assumes that each reservation has a unique basket number.
+- `count(distinct b.id) as total_number_of_baskets`: This part calculates the number of unique baskets for each reservation. It assumes that each reservation has a unique basket number.
 
--from booking as b: Includes the booking table in the query with the alias b.
+- `from booking as b`: Includes the `booking` table in the query with the alias `b`.
 
--left join passenger as p on p.booking_id = b.id: It performs a left join between the booking table and the passenger table, linking them based on the reservation ID (id in the booking table and booking_id in the passenger table). This is used to obtain the passenger count for each reservation.
+- `left join passenger as p on p.booking_id = b.id`: It performs a left join between the `booking` table and the `passenger` table, linking them based on the reservation ID (`id` in the `booking` table and `booking_id` in the `passenger` table). This is used to obtain the passenger count for each reservation.
 
--where extract(year from b.booking_date) = 2020: In this section, it filters reservations for the year 2020. It focuses only on data from the year 2020.
+- `where extract(year from b.booking_date) = 2020`: In this section, it filters reservations for the year 2020. It focuses only on data from the year 2020.
 
--group by 1,2: The query groups the results by the year_filter and environment_breakdown columns. This allows the results to be aggregated separately for each year and environment.
+- `group by 1,2`: The query groups the results by the `year_filter` and `environment_breakdown` columns. This allows the results to be aggregated separately for each year and environment.
 
--As a result, this query retrieves the passenger count and basket count for reservations made in different reservation environments on a monthly basis for the year 2020.  
+- As a result, this query retrieves the passenger count and basket count for reservations made in different reservation environments on a monthly basis for the year 2020.
+
