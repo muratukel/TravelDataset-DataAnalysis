@@ -86,13 +86,13 @@ This is a simplified textual representation of the database structure and relati
 
 ``` sql
 select 
-	distinct b.contact_id as customers,  	-- customer id number
-	count(distinct b.id) as total_sales, 	 -- total number of sales (bookings)
-	sum(pt.amount) as total_price,		  -- total sales amount
-	round(avg(pt.amount),2) as avg_ticket_price, -- average ticket price 
-from booking as b
+	distinct b.contact_id as customers,  		-- customer id number
+	count(distinct b.id) as total_sales, 	 	-- total number of sales (bookings)
+	sum(pt.amount) as total_price,		  	-- total sales amount
+	round(avg(pt.amount),2) as avg_ticket_price,	-- average ticket price 
+from booking as 
 left join payment as pt
 	on pt.booking_id=b.id
-where pt.payment_status = 'Succes-Payment'	-- successful payment filter 
-group by 1                                      -- customer-based grouping
+where pt.payment_status = 'Succes-Payment'		-- successful payment filter 
+group by 1                                      	-- customer-based grouping
 ```
