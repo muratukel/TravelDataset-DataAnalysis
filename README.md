@@ -83,3 +83,16 @@ This is a simplified textual representation of the database structure and relati
 -  This question might have been posed by a marketing team looking to understand customer behavior and enhance marketing strategies. Total sales quantities, amounts, and average ticket prices on a per-customer basis provide insights into how frequently customers make purchases, how much they spend, and their preferences for specific product categories. This information can be utilized for making decisions related to customer segmentation, loyalty programs, personalized recommendations, and discount campaigns.
 
 - To answer this question, it is necessary to group sales transactions in the dataset by customer identification numbers and calculate the total sales quantity, total sales amount, and average ticket price for each group.
+
+``` sql
+select 
+	distinct b.contact_id as customers,  			    -- customer id number
+	count(distinct b.id) as total_sales, 			    -- total number of sales (bookings)
+	sum(pt.amount) as total_price,		 			      -- total sales amount
+	round(avg(pt.amount),2) as avg_ticket_price,	-- average ticket price 
+from booking as b
+left join payment as pt
+	on pt.booking_id=b.id
+where pt.payment_status = 'Succes-Payment'			-- successful payment filter 
+group by 1                                      -- customer-based grouping
+```
