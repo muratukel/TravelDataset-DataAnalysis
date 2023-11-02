@@ -76,6 +76,7 @@ This is a simplified textual representation of the database structure and relati
 
 ![image](https://github.com/muratukel/TravelDataset-DataAnalysis/assets/136103635/8bebb0ec-32ff-4bea-ae07-2c1b88c4e17a)
 
+# CASE STUDY QUESTİONS AND QUERYS 
 
 ## 1-) Retrieve total sales quantities, amounts, and average ticket prices on a per-customer basis.
 
