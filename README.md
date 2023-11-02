@@ -96,6 +96,22 @@ left join payment as pt
 where pt.payment_status = 'Succes-Payment'		-- successful payment filter 
 group by 1                                      	-- customer-based grouping
 ```
+- `select distinct b.contact_id as customers`: Selects the column `contact_id`, which represents customer ID numbers.
+
+- `count(distinct b.id) as total_sales`: Counts the total number of sales (bookings).
+
+- `sum(pt.amount) as total_price`: Calculates the total sales amount by summing the `amount` column from the payment table.
+
+- `round(avg(pt.amount), 2) as avg_ticket_price`: Computes the average ticket price by rounding the average of the `amount` column in the payment table to two decimal places.
+
+- `from booking as b`: Includes the `booking` table in the query with the alias `b`.
+
+- `left join payment as pt on pt.booking_id = b.id`: Performs a left join between the `booking` table and the `payment` table, linking them based on the booking ID (`id` in the `booking` table and `booking_id` in the `payment` table).
+
+- `where pt.payment_status = 'Succes-Payment'`: Filters the results to include only reservations with a payment status of 'Succes-Payment,' representing successful payments.
+
+- `group by 1`: Groups the results by customer, displaying the total sales, total sales amount, and average ticket price for each customer.
+
 - This code retrieves the total sales quantity, amount, and average ticket price for each customer in the dataset and sorts them in descending order by the total amount. This allows you to see the customers who spend the most.
 
 ## 2-) In 2020, on a monthly basis, retrieve the total number of passengers and basket counts in environmental breakdowns.
