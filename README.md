@@ -97,3 +97,23 @@ where pt.payment_status = 'Succes-Payment'		-- successful payment filter
 group by 1                                      	-- customer-based grouping
 ```
 - This code retrieves the total sales quantity, amount, and average ticket price for each customer in the dataset and sorts them in descending order by the total amount. This allows you to see the customers who spend the most.
+
+## 2-) In 2020, on a monthly basis, retrieve the total number of passengers and basket counts in environmental breakdowns.
+
+- This question seeks to analyze the profiles of customers of an airline company and determine how much sales were made in different environments (web, mobile, call center, etc.) on a monthly basis in the year 2020. Bringing the total number of passengers and basket counts in monthly environmental breakdowns reveals where the airline company received more demand, where more baskets were created, and where more passengers made purchases. This information can assist the airline company in optimizing its marketing and sales strategies.
+
+- To answer this question, it is necessary to join the booking and passenger tables in the dataset and group them by booking_date (reservation date) and booking_environment (reservation environment) columns.
+
+```sql
+select 
+	to_char(b.booking_date,'YYYY-MM') as year_filter, 	-- column representing year and month
+	b.booking_environment as environment_breakdown,		-- reservation environment
+	count(distinct p.id) as total_passenger_numbers,	-- total number of passengers
+	count(distinct b.id) as total_number_of_baskets		-- total number of baskets
+from booking as b
+left join passenger as p
+	on p.booking_id=b.id
+where extract(year from b.booking_date) = 2020			-- bookings for 2020
+group by 1,2
+```
+  
