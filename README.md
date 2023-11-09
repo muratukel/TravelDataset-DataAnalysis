@@ -114,6 +114,20 @@ group by 1                                      	-- customer-based grouping
 
 - This code retrieves the total sales quantity, amount, and average ticket price for each customer in the dataset and sorts them in descending order by the total amount. This allows you to see the customers who spend the most.
 
+| customers | total_sales | total_price | avg_ticket_price |
+|-----------|-------------|-------------|------------------|
+| 157       | 2           | 500         | 250.00           |
+| 244       | 1           | 575         | 575.00           |
+| 271       | 1           | 85          | 85.00            |
+| 799       | 1           | 70          | 70.00            |
+| 1894      | 1           | 80          | 80.00            |
+| 2338      | 4           | 1350        | 337.50           |
+| 2800      | 2           | 75          | 37.50            |
+| 2935      | 1           | 137         | 137.00           |
+| 3013      | 2           | 270         | 135.00           |
+| 3172      | 1           | 150         | 150.00           |
+
+- The first 10 rows are shown.
 ## 2-) In 2020, on a monthly basis, retrieve the total number of passengers and basket counts in environmental breakdowns.
 
 - This question seeks to analyze the profiles of customers of an airline company and determine how much sales were made in different environments (web, mobile, call center, etc.) on a monthly basis in the year 2020. Bringing the total number of passengers and basket counts in monthly environmental breakdowns reveals where the airline company received more demand, where more baskets were created, and where more passengers made purchases. This information can assist the airline company in optimizing its marketing and sales strategies.
