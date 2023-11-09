@@ -74,7 +74,7 @@ To represent the database structure and relationships between tables, you can us
 
 This is a simplified textual representation of the database structure and relationships between tables. For a more detailed visual representation, you can use database modeling tools like Entity-Relationship Diagrams (ERD) or draw diagrams using applications like draw.io or Lucidchart.
 
-![image](https://github.com/muratukel/TravelDataset-DataAnalysis/assets/136103635/8bebb0ec-32ff-4bea-ae07-2c1b88c4e17a)
+![image](https://github.com/muratukel/TravelDataset-DataAnalysis/assets/136103635/7a526791-5fc3-48a9-9e66-19badfa7b0c0)
 
 # CASE STUDY QUESTİONS AND QUERYS 
 
