@@ -191,5 +191,7 @@ group by 1,2
 | 2020-12     | Application            | 4519                     | 3852                    |
 | 2020-12     | Internet               | 2555                     | 2170                    |
 
-
+## 3-) Calculate the success rates of the banks and present them in a graph.
+- This analysis has been requested to evaluate and compare the performance of the bank. The success rate of the bank is a measure that indicates how effective its activities such as lending, deposit collection, generating interest income, and risk management are. By comparing the success rate of the bank over time or with other banks in a graph, it is possible to identify the strengths and weaknesses, as well as opportunities and threats of the bank. This analysis can assist the bank in making better decisions in areas such as strategic planning, marketing, customer relations, and competitive advantage.
+  
 # More of our case studies to come!
