@@ -150,3 +150,4 @@ group by 1,2
 
 - As a result, this query retrieves the passenger count and basket count for reservations made in different reservation environments on a monthly basis for the year 2020.
 
+# More of our case studies to come!
