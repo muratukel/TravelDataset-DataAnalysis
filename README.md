@@ -214,7 +214,7 @@ group by 1
 
 - `from payment`: This part specifies the table from which the data will be retrieved. In this case, data is pulled from a table named `payment.`
 
-- `where card_type = 'credit-card' and payment_status != 'Return'`: This section specifies which payments to select. It selects only payments belonging to `credit-card` type and with a payment status not equal to 'return.'
+- `where card_type = 'credit-card' and payment_status != 'Return'`: This section specifies which payments to select. It selects only payments belonging to `credit-card` type and with a payment status not equal to `return.`
 
 - `group by 1`: This section specifies the criteria by which the results of the query will be grouped. In this case, it is grouped by the `card_type` column.
 
