@@ -164,4 +164,32 @@ group by 1,2
 
 - As a result, this query retrieves the passenger count and basket count for reservations made in different reservation environments on a monthly basis for the year 2020.
 
+| year_filter | environment_breakdown | total_passenger_numbers | total_number_of_baskets |
+|-------------|------------------------|--------------------------|-------------------------|
+| 2020-01     | Application            | 8892                     | 6985                    |
+| 2020-01     | Internet               | 14983                    | 11692                   |
+| 2020-02     | Application            | 6111                     | 5029                    |
+| 2020-02     | Internet               | 8400                     | 6868                    |
+| 2020-03     | Application            | 5299                     | 4518                    |
+| 2020-03     | Internet               | 6208                     | 5213                    |
+| 2020-04     | Application            | 203                      | 177                     |
+| 2020-04     | Internet               | 127                      | 107                     |
+| 2020-05     | Application            | 2023                     | 1737                    |
+| 2020-05     | Internet               | 2448                     | 2040                    |
+| 2020-06     | Application            | 5414                     | 4537                    |
+| 2020-06     | Internet               | 4975                     | 4084                    |
+| 2020-07     | Application            | 9262                     | 7233                    |
+| 2020-07     | Internet               | 7881                     | 6007                    |
+| 2020-08     | Application            | 8680                     | 6805                    |
+| 2020-08     | Internet               | 5310                     | 4026                    |
+| 2020-09     | Application            | 5740                     | 4680                    |
+| 2020-09     | Internet               | 3161                     | 2484                    |
+| 2020-10     | Application            | 5867                     | 4848                    |
+| 2020-10     | Internet               | 3253                     | 2604                    |
+| 2020-11     | Application            | 4899                     | 4092                    |
+| 2020-11     | Internet               | 2564                     | 2134                    |
+| 2020-12     | Application            | 4519                     | 3852                    |
+| 2020-12     | Internet               | 2555                     | 2170                    |
+
+
 # More of our case studies to come!
