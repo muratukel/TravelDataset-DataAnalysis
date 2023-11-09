@@ -206,7 +206,7 @@ from payment
 where card_type = 'Credit-Card' and payment_status != 'Return'
 group by 1
 ```
-- **select card_type, ...**: This section specifies which columns the query will select. The 'card_type' column and other computations are among the selected columns in this query.
+- `select card_type, ...`: This section specifies which columns the query will select. The 'card_type' column and other computations are among the selected columns in this query.
 
 - **count(case when payment_status = 'success-payment' then 1 end) as total_successful_payment, ...**: This part calculates the total number of payments with the 'success-payment' status and assigns it to a column named 'total_successful_payment.' Similarly, it assigns the total number of all payments to a column named 'total_payments.'
 
