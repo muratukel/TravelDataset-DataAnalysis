@@ -206,18 +206,18 @@ from payment
 where card_type = 'Credit-Card' and payment_status != 'Return'
 group by 1
 ```
-select card_type, ...: this section specifies which columns the query will select. the 'card_type' column and other computations are among the selected columns in this query.
+- select card_type, ...: this section specifies which columns the query will select. the 'card_type' column and other computations are among the selected columns in this query.
 
-count(case when payment_status = 'success-payment' then 1 end) as total_successful_payment, ...: this part calculates the total number of payments with the 'success-payment' status and assigns it to a column named 'total_successful_payment.' similarly, it assigns the total number of all payments to a column named 'total_payments.'
+-count(case when payment_status = 'success-payment' then 1 end) as total_successful_payment, ...: this part calculates the total number of payments with the 'success-payment' status and assigns it to a column named 'total_successful_payment.' similarly, it assigns the total number of all payments to a column named 'total_payments.'
 
-round((count(case when payment_status = 'success-payment' then 1 end) * 1.0 / count(*) * 1.0), 2) as bank_success_rate: this section calculates the success rate. the success rate represents the ratio of payments with the 'success-payment' status to the total number of payments. it assigns this ratio to a column named 'bank_success_rate' and rounds it to 2 decimal places.
+-round((count(case when payment_status = 'success-payment' then 1 end) * 1.0 / count(*) * 1.0), 2) as bank_success_rate: this section calculates the success rate. the success rate represents the ratio of payments with the 'success-payment' status to the total number of payments. it assigns this ratio to a column named 'bank_success_rate' and rounds it to 2 decimal places.
 
-from payment: this part specifies the table from which the data will be retrieved. in this case, data is pulled from a table named "payment."
+-from payment: this part specifies the table from which the data will be retrieved. in this case, data is pulled from a table named "payment."
 
-where card_type = 'credit-card' and payment_status != 'return': this section specifies which payments to select. it selects only payments belonging to 'credit-card' type and with a payment status not equal to 'return.'
+-where card_type = 'credit-card' and payment_status != 'return': this section specifies which payments to select. it selects only payments belonging to 'credit-card' type and with a payment status not equal to 'return.'
 
-group by 1: this section specifies the criteria by which the results of the query will be grouped. in this case, it is grouped by the 'card_type' column.
+-group by 1: this section specifies the criteria by which the results of the query will be grouped. in this case, it is grouped by the 'card_type' column.
 
-in summary, this query calculates the total number of successful payments, the total number of all payments, and the success rate for credit card payments. it includes only payments for 'credit-card' type without 'return' status and groups the results by 'card_type'.
+-in summary, this query calculates the total number of successful payments, the total number of all payments, and the success rate for credit card payments. it includes only payments for 'credit-card' type without 'return' status and groups the results by 'card_type'.
 
 # More of our case studies to come!
