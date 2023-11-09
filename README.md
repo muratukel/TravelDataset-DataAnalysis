@@ -220,5 +220,10 @@ group by 1
 
 - In summary, this query calculates the total number of successful payments, the total number of all payments, and the success rate for credit card payments. It includes only payments for 'credit-card' type without 'return' status and groups the results by 'card_type'.
 
+| card_type   | total_successful_payment | total_payments | bank_success_rate |
+|-------------|--------------------------|----------------|-------------------|
+| Credit-Card | 109983                   | 151612         | 0.73              |
+
+
 
 # More of our case studies to come!
