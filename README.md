@@ -433,7 +433,52 @@ from company_revenue_percent
 - For example, it is observed that 'Company-B' contributes to 59% of the revenue. Such an analysis is useful to understand the contribution of each company and provide a perspective on the overall success of the business. Higher percentage companies generally bring in more revenue, while lower percentage ones may contribute less, making it crucial for business strategies and performance evaluations.
 
 - According to this analysis, it can be stated that Company B is the most valuable customer for the business, and Companies A and C are also significant sources of revenue. On the other hand, Company D appears to be less important for the business. This information can be valuable in guiding how the business approaches its customers and provides value to them.
- 
+
+## 6-) In the breakdown of 'Company,' 'environment,' and 'gender,' calculate the number of completed passengers, the number of customers, and the average payment amount.
+
+- It might have been requested to understand the performance of the transportation company in different segments and customer behaviors. This analysis can reveal in which contexts, from which genders, and from which companies the company attracts more passengers, and how often and in what amounts these passengers make payments. This information can assist the company in improving its marketing, pricing, service quality, and competitive strategies.
+
+```sql
+select 
+	b.booking_company,
+	b.booking_environment,
+	pr.gender,
+	count(pr.id) as passenger_number,
+	count(distinct b.contact_id) as customer_number,
+	round(avg(pt.amount),2) as avg_payment_amount
+from booking as b
+left join payment as pt
+	on pt.booking_id = b.id
+left join passenger as pr
+	on pr.booking_id = b.id
+where pt.payment_status = 'Succes-Payment'	
+group by 1,2,3
+```
+
+| booking_company | booking_environment | gender | passenger_number | customer_number | avg_payment_amount |
+|------------------|----------------------|--------|-------------------|------------------|--------------------|
+| Company-A        | Application         | F      | 4101              | 2955             | 187.79             |
+| Company-A        | Application         | M      | 8252              | 6338             | 175.21             |
+| Company-A        | Internet            | F      | 4546              | 3498             | 205.72             |
+| Company-A        | Internet            | M      | 6982              | 5711             | 201.21             |
+| Company-B        | Application         | F      | 15900             | 9956             | 152.14             |
+| Company-B        | Application         | M      | 35153             | 22541            | 154.60             |
+| Company-B        | Internet            | F      | 18884             | 13793            | 156.59             |
+| Company-B        | Internet            | M      | 31115             | 23449            | 149.58             |
+| Company-C        | Application         | F      | 3423              | 2245             | 237.44             |
+| Company-C        | Application         | M      | 5625              | 3948             | 243.38             |
+| Company-C        | Internet            | F      | 3757              | 2810             | 278.10             |
+| Company-C        | Internet            | M      | 5067              | 3980             | 267.96             |
+| Company-D        | Application         | F      | 277               | 220              | 231.69             |
+| Company-D        | Application         | M      | 494               | 396              | 218.24             |
+| Company-D        | Internet            | F      | 352               | 255              | 226.75             |
+| Company-D        | Internet            | M      | 475               | 393              | 208.56             |
+| Company-E        | Application         | F      | 543               | 400              | 171.37             |
+| Company-E        | Application         | M      | 932               | 722              | 193.14             |
+| Company-E        | Internet            | F      | 804               | 651              | 176.15             |
+| Company-E        | Internet            | M      | 1029              | 845              | 197.88             |
+
+
 # More of our case studies to come!
 
 
