@@ -272,4 +272,84 @@ from customer_info as c
 order by c.contact_id asc
 ```
 
+### In the query I wrote below, I only selected those with a 'Success-Payment' status in terms of payment.
+
+```sql
+with customer_info as 
+(
+select 
+	distinct b.contact_id,
+	b.e_mail,
+	round(avg(pt.amount),2) as avg_order_amount,
+	round((select avg(amount) from payment
+		  			where payment_status = 'Succes-Payment'),2) as average_order_amount_of_all_passengers
+from booking as b 
+left join payment as pt
+	on pt.booking_id=b.id	
+where pt.payment_status = 'Succes-Payment' 
+group by 1,2
+having 
+	round(avg(pt.amount),2) > round((select avg(amount) from payment),2)
+	order by 1 asc
+)
+select 
+	c.contact_id,
+	c.e_mail,
+	c.avg_order_amount,
+	t.*
+from customer_info as c
+left join (select 
+		  		distinct b.contact_id,
+		   		b.user_id,
+		   		b.user_register_date
+		   from booking as b
+		  left join passenger as pr 
+		  	on pr.booking_id=b.id
+		  left join payment as pt
+		  	on pt.booking_id=b.id ) as t on t.contact_id=c.contact_id
+order by c.contact_id asc
+```
+
+### For this question, I took into account both the payment status and whether customers are members or not. Based on that, I conducted an analysis.
+
+```sql
+with customer_info as 
+(
+    select 
+        distinct b.contact_id,
+        b.e_mail,
+        round(avg(pt.amount),2) as avg_order_amount,
+        round((select avg(amount) from payment),2) as average_order_amount_of_all_passengers
+    from booking as b 
+    left join payment as pt
+        on pt.booking_id = b.id
+    where pt.payment_status = 'Succes-Payment' 
+    group by 1,2
+    having round(avg(pt.amount),2) > round((select avg(amount) from payment),2)
+)
+
+, passenger_info as
+(
+    select 
+        distinct b.contact_id,
+        b.user_id,
+        b.user_register_date
+    from booking as b
+    left join passenger as pr 
+        on pr.booking_id = b.id
+    left join payment as pt
+        on pt.booking_id = b.id
+)
+
+select 
+    distinct c.contact_id,
+    c.e_mail,
+    t.*
+from customer_info as c
+left join passenger_info as t 
+    on t.contact_id = c.contact_id
+	where t.user_id != 'Not-Member'
+order by c.contact_id asc
+```
+
 # More of our case studies to come!
