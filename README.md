@@ -478,6 +478,94 @@ group by 1,2,3
 | Company-E        | Internet            | F      | 804               | 651              | 176.15             |
 | Company-E        | Internet            | M      | 1029              | 845              | 197.88             |
 
+## 7-) Retrieve the monthly counts and average amounts of successful/failed/cancelled reservations.
+
+- It might have been requested to measure the monthly performance and customer satisfaction of a business with a reservation system. This analysis can demonstrate in which months the business receives more or fewer reservations, the proportion of these reservations that are successful, failed, or canceled, the average amounts for each of these statuses, and their impact on the business's revenue. This information can assist the business in improving the reservation process, enhancing customer loyalty, adapting to seasonal changes, and maintaining competitiveness.
+
+```sql
+select 
+	to_char(b.booking_date,'YYYY-MM') as monthly_as,
+	count(case
+		 	when pt.payment_status = 'Succes-Payment' then b.id end) as succes_booking_number,
+		round(avg(case
+		 	when pt.payment_status = 'Succes-Payment' then pt.amount end),2) as avg_succes_amount,				
+	count(case
+		 	when pt.payment_status = 'Fail-Payment' then b.id end) as fail_booking_number,
+		round(avg(case
+		 	when pt.payment_status = 'Fail-Payment' then pt.amount end),2) as avg_fail_amount,				
+	count(case 
+		  	when pt.payment_status = 'Return' then b.id end) as return_booking_number,
+		round(avg(case
+		 	when pt.payment_status = 'Return' then pt.amount end),2) as avg_return_amount		
+from booking as b
+left join payment as pt 
+	on pt.booking_id = b.id
+group by 1 
+```
+| monthly_as | succes_booking_number | avg_succes_amount | fail_booking_number | avg_fail_amount | return_booking_number | avg_return_amount |
+|------------|------------------------|-------------------|----------------------|-----------------|------------------------|-------------------|
+| 2019-12    | 5073                   | 158.69            | 1253                 | 159.08          | 325                    | 124.52            |
+| 2020-01    | 14225                  | 174.74            | 4385                 | 186.74          | 938                    | 150.52            |
+| 2020-02    | 9503                   | 161.69            | 3731                 | 173.05          | 750                    | 147.83            |
+| 2020-03    | 7714                   | 160.30            | 3011                 | 177.02          | 1071                   | 158.33            |
+| 2020-04    | 221                    | 175.23            | 92                   | 157.72          | 64                     | 214.81            |
+| 2020-05    | 2962                   | 199.80            | 1241                 | 184.04          | 357                    | 172.04            |
+| 2020-06    | 6937                   | 188.09            | 2601                 | 275.01          | 863                    | 205.97            |
+| 2020-07    | 10707                  | 184.74            | 3873                 | 238.50          | 1399                   | 208.10            |
+| 2020-08    | 8213                   | 176.34            | 3680                 | 185.38          | 1248                   | 191.66            |
+| 2020-09    | 5158                   | 159.77            | 2596                 | 155.45          | 999                    | 141.62            |
+| 2020-10    | 5527                   | 144.28            | 2640                 | 150.19          | 834                    | 126.69            |
+| 2020-11    | 4270                   | 143.95            | 2629                 | 132.43          | 609                    | 135.23            |
+| 2020-12    | 4602                   | 141.23            | 2021                 | 136.86          | 731                    | 153.45            |
+| 2021-01    | 6088                   | 159.85            | 2392                 | 193.52          | 900                    | 206.31            |
+| 2021-02    | 6508                   | 133.14            | 2320                 | 129.91          | 698                    | 119.28            |
+| 2021-03    | 7654                   | 141.36            | 2482                 | 144.86          | 811                    | 136.07            |
+| 2021-04    | 8399                   | 136.47            | 2922                 | 178.99          | 1504                   | 144.89            |
+| 2021-05    | 5843                   | 220.90            | 1980                 | 245.38          | 1073                   | 236.86            |
+
+### Revenue analysis by payment types for the company.
+
+```sql
+select 
+	to_char(b.booking_date,'YYYY-MM') as monthly_as,
+	count(case
+		 	when pt.payment_status = 'Succes-Payment' then b.id end) as succes_booking_number,
+		round(sum(case
+		 	when pt.payment_status = 'Succes-Payment' then pt.amount end),2) as sum_succes_amount,				
+	count(case
+		 	when pt.payment_status = 'Fail-Payment' then b.id end) as fail_booking_number,
+		round(sum(case
+		 	when pt.payment_status = 'Fail-Payment' then pt.amount end),2) as sum_fail_amount,				
+	count(case 
+		  	when pt.payment_status = 'Return' then b.id end) as return_booking_number,
+		round(sum(case
+		 	when pt.payment_status = 'Return' then pt.amount end),2) as sum_return_amount		
+from booking as b
+left join payment as pt 
+	on pt.booking_id = b.id
+group by 1 
+```
+| monthly_as | succes_booking_number | sum_succes_amount | fail_booking_number | sum_fail_amount | return_booking_number | sum_return_amount |
+|------------|------------------------|-------------------|----------------------|-----------------|------------------------|-------------------|
+| 2019-12    | 5073                   | 805,059.00        | 1253                 | 199,329.00      | 325                    | 40,469.00         |
+| 2020-01    | 14225                  | 2,485,735.00      | 4385                 | 818,851.00      | 938                    | 141,188.00        |
+| 2020-02    | 9503                   | 1,536,540.00      | 3731                 | 645,647.00      | 750                    | 110,871.00        |
+| 2020-03    | 7714                   | 1,236,529.00      | 3011                 | 533,021.00      | 1071                   | 169,572.00        |
+| 2020-04    | 221                    | 38,726.00         | 92                   | 14,510.00       | 64                     | 13,748.00         |
+| 2020-05    | 2962                   | 591,800.00        | 1241                 | 228,388.00      | 357                    | 61,417.00         |
+| 2020-06    | 6937                   | 1,304,771.00      | 2601                 | 715,295.00      | 863                    | 177,749.00        |
+| 2020-07    | 10707                  | 1,977,968.00      | 3873                 | 923,695.00      | 1399                   | 291,127.00        |
+| 2020-08    | 8213                   | 1,448,250.00      | 3680                 | 682,180.00      | 1248                   | 239,187.00        |
+| 2020-09    | 5158                   | 824,094.00        | 2596                 | 403,538.00      | 999                    | 141,479.00        |
+| 2020-10    | 5527                   | 797,417.00        | 2640                 | 396,491.00      | 834                    | 105,660.00        |
+| 2020-11    | 4270                   | 614,670.00        | 2629                 | 348,159.00      | 609                    | 82,353.00         |
+| 2020-12    | 4602                   | 649,934.00        | 2021                 | 276,596.00      | 731                    | 112,170.00        |
+| 2021-01    | 6088                   | 973,159.00        | 2392                 | 462,896.00      | 900                    | 185,678.00        |
+| 2021-02    | 6508                   | 866,488.00        | 2320                 | 301,398.00      | 698                    | 83,254.00         |
+| 2021-03    | 7654                   | 1,081,999.00      | 2482                 | 359,543.00      | 811                    | 110,351.00        |
+| 2021-04    | 8399                   | 1,146,240.00      | 2922                 | 522,998.00      | 1504                   | 217,916.00        |
+| 2021-05    | 5843                   | 1,290,730.00      | 1980                 | 485,850.00      | 1073                   | 254,147.00        |
+
 
 # More of our case studies to come!
 
