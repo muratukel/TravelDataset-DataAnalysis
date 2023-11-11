@@ -398,5 +398,42 @@ order by c.contact_id asc
 | 50965      | 55714@travel.com     | 50965        | 10623256   | 2020-09-06 12:23:00       |
 
 - The first 10 rows are shown.
-- 
+
+## 5-) What percentage of the total revenue does the total order amount of each company constitute?
+
+- It might have been requested to determine from which companies a business generates the most revenue and which companies are more crucial as a source of income. This analysis can assist the business in making better decisions regarding customer relationship management, marketing strategy, pricing policy, and competitive advantage. To conduct this analysis, it is necessary to express the total order amount of each company as a percentage of the total revenue by dividing it.
+
+```sql
+with company_revenue_percent as 
+( 
+	select 
+		b.booking_company as each_company,
+		sum(pt.amount) as total_order_amount,
+		round((select sum(amount) from payment
+		   			where payment_status = 'Succes-Payment'),2) as total_revenue
+from booking as b	
+left join payment as pt
+	on pt.booking_id=b.id
+ where pt.payment_status = 'Succes-Payment'
+group by 1	
+)
+select 
+	each_company,
+	round((total_order_amount*1.0/total_revenue*1.0),2)*100 as revenue_percent
+from company_revenue_percent
+```
+| each_company | revenue_percent |
+|--------------|------------------|
+| Company-A    | 18.00            |
+| Company-B    | 59.00            |
+| Company-C    | 19.00            |
+| Company-D    | 1.00             |
+| Company-E    | 3.00             |
+
+- For example, it is observed that 'Company-B' contributes to 59% of the revenue. Such an analysis is useful to understand the contribution of each company and provide a perspective on the overall success of the business. Higher percentage companies generally bring in more revenue, while lower percentage ones may contribute less, making it crucial for business strategies and performance evaluations.
+
+- According to this analysis, it can be stated that Company B is the most valuable customer for the business, and Companies A and C are also significant sources of revenue. On the other hand, Company D appears to be less important for the business. This information can be valuable in guiding how the business approaches its customers and provides value to them.
+ 
 # More of our case studies to come!
+
+
