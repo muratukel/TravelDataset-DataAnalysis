@@ -128,6 +128,7 @@ group by 1                                      	-- customer-based grouping
 | 3172      | 1           | 150         | 150.00           |
 
 - The first 10 rows are shown.
+  
 ## 2-) In 2020, on a monthly basis, retrieve the total number of passengers and basket counts in environmental breakdowns.
 
 - This question seeks to analyze the profiles of customers of an airline company and determine how much sales were made in different environments (web, mobile, call center, etc.) on a monthly basis in the year 2020. Bringing the total number of passengers and basket counts in monthly environmental breakdowns reveals where the airline company received more demand, where more baskets were created, and where more passengers made purchases. This information can assist the airline company in optimizing its marketing and sales strategies.
@@ -245,6 +246,7 @@ group by 1
 
 
 ## 4-) Retrieve customer information whose average order amount is higher than the average order amount of all passengers.
+
 - This analysis might have been requested to understand customers' purchasing behaviors and provide them with better services. For instance, by identifying customers who place orders above the average, special discounts, loyalty programs, or personalized recommendations can be offered to them. This way, customer satisfaction and loyalty can be increased. Additionally, this analysis can reveal which products or services are in higher demand and how marketing strategies can be optimized to enhance them.
 
 ### I wrote a query here without considering the status of payments, without checking whether customers are members or not. Our query is as follows:
@@ -271,6 +273,21 @@ select
 from customer_info as c
 order by c.contact_id asc
 ```
+
+| contact_id | e_mail               |
+|------------|----------------------|
+| 34         | 8593@travel.com      |
+| 157        | 26276@travel.com     |
+| 244        | 80652@travel.com     |
+| 2338       | 8574@travel.com      |
+| 3322       | 81527@travel.com     |
+| 3859       | 60148@travel.com     |
+| 4027       | 19280@travel.com     |
+| 4081       | 23836@travel.com     |
+| 4096       | 28182@travel.com     |
+| 4144       | 41970@travel.com     |
+
+- The first 10 rows are shown.
 
 ### In the query I wrote below, I only selected those with a 'Success-Payment' status in terms of payment.
 
@@ -309,6 +326,21 @@ left join (select
 		  	on pt.booking_id=b.id ) as t on t.contact_id=c.contact_id
 order by c.contact_id asc
 ```
+
+| contact_id | e_mail               | avg_order_amount | contact_id-2 | user_id    | user_register_date      |
+|------------|----------------------|------------------|--------------|------------|--------------------------|
+| 157        | 26276@travel.com     | 250.00           | 157          | Not-Member |                          |
+| 244        | 80652@travel.com     | 575.00           | 244          | Not-Member |                          |
+| 2338       | 8574@travel.com      | 337.50           | 2338         | 235039     | 2018-05-15 21:13:00       |
+| 2338       | 8574@travel.com      | 337.50           | 2338         | Not-Member |                          |
+| 3322       | 81527@travel.com     | 375.00           | 3322         | Not-Member |                          |
+| 3859       | 60148@travel.com     | 200.00           | 3859         | 6574810    | 2020-08-09 10:12:00       |
+| 4027       | 19280@travel.com     | 175.00           | 4027         | Not-Member |                          |
+| 4081       | 23836@travel.com     | 375.00           | 4081         | Not-Member |                          |
+| 4096       | 28182@travel.com     | 525.00           | 4096         | Not-Member |                          |
+| 4144       | 41970@travel.com     | 200.00           | 4144         | 10174672   | 2021-01-19 09:50:00       |
+
+- The first 10 rows are shown.
 
 ### For this question, I took into account both the payment status and whether customers are members or not. Based on that, I conducted an analysis.
 
@@ -352,4 +384,19 @@ left join passenger_info as t
 order by c.contact_id asc
 ```
 
+| contact_id | e_mail               | contact_id-2 | user_id    | user_register_date      |
+|------------|----------------------|--------------|------------|--------------------------|
+| 2338       | 8574@travel.com      | 2338         | 235039     | 2018-05-15 21:13:00       |
+| 3859       | 60148@travel.com     | 3859         | 6574810    | 2020-08-09 10:12:00       |
+| 4144       | 41970@travel.com     | 4144         | 10174672   | 2021-01-19 09:50:00       |
+| 9325       | 70669@travel.com     | 9325         | 4865605    | 2020-06-27 18:06:00       |
+| 11188      | 67085@travel.com     | 11188        | 2036602    | 2020-12-26 17:42:00       |
+| 16606      | 42846@travel.com     | 16606        | 1586338    | 2018-08-22 00:52:00       |
+| 41116      | 76380@travel.com     | 41116        | 10501897   | 2020-08-21 00:21:00       |
+| 48196      | 73886@travel.com     | 48196        | 11688322   | 2021-02-11 13:15:00       |
+| 49180      | 87313@travel.com     | 49180        | 8211880    | 2021-02-03 11:16:00       |
+| 50965      | 55714@travel.com     | 50965        | 10623256   | 2020-09-06 12:23:00       |
+
+- The first 10 rows are shown.
+- 
 # More of our case studies to come!
