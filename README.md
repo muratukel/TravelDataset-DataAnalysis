@@ -225,6 +225,7 @@ group by 1
 | Credit-Card | 109983                   | 151612         | 0.73              |
 
 ### I wanted to calculate the alternative bank profit rate.
+
 ```sql
 select 
 	card_type,
@@ -238,5 +239,37 @@ where card_type = 'Credit-Card' and payment_status != 'Return'
 group by 1
 ```
 
+| card_type    | total_successful_earnings | total_earnings | bank_earnings_rate |
+|--------------|---------------------------|-----------------|---------------------|
+| Credit-Card  | 17994886                  | 25607857        | 0.70                |
+
+
+## 4-) Retrieve customer information whose average order amount is higher than the average order amount of all passengers.
+- This analysis might have been requested to understand customers' purchasing behaviors and provide them with better services. For instance, by identifying customers who place orders above the average, special discounts, loyalty programs, or personalized recommendations can be offered to them. This way, customer satisfaction and loyalty can be increased. Additionally, this analysis can reveal which products or services are in higher demand and how marketing strategies can be optimized to enhance them.
+
+### I wrote a query here without considering the status of payments, without checking whether customers are members or not. Our query is as follows:
+
+```sql
+with customer_info as 
+(
+select 
+	distinct b.contact_id,
+	b.e_mail,
+	round(avg(pt.amount),2) as avg_order_amount,
+	round((select avg(amount) from payment),2) as average_order_amount_of_all_passengers
+from booking as b 
+left join payment as pt
+	on pt.booking_id=b.id	
+group by 1,2
+having 
+	round(avg(pt.amount),2) > round((select avg(amount) from payment),2)
+	order by 1 asc
+)
+select 
+	c.contact_id,
+	c.e_mail
+from customer_info as c
+order by c.contact_id asc
+```
 
 # More of our case studies to come!
