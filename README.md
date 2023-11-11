@@ -224,6 +224,19 @@ group by 1
 |-------------|--------------------------|----------------|-------------------|
 | Credit-Card | 109983                   | 151612         | 0.73              |
 
+### I wanted to calculate the alternative bank profit rate.
+```sql
+select 
+	card_type,
+	sum(case 
+		when payment_status = 'Succes-Payment' then amount end) as total_successful_earnings,
+	sum(amount) as total_earnings,
+		round((sum(case 
+		when payment_status = 'Succes-Payment' then amount end) * 1.0 / sum(amount) * 1.0),2) as bank_earnings_rate
+from payment 
+where card_type = 'Credit-Card' and payment_status != 'Return'
+group by 1
+```
 
 
 # More of our case studies to come!
